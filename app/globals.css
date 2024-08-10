@@ -4,9 +4,9 @@
 
 @import url("../styles/theme.css");
 
-body {
+/* body {
   font-family: "Inter", sans-serif;
-}
+} */
 
 @layer utilities {
   .flex-center {
