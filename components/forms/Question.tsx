@@ -19,6 +19,7 @@ import React, { useRef, useState } from "react";
 import { Editor } from "@tinymce/tinymce-react";
 import { Badge } from "../ui/badge";
 import Image from "next/image";
+import { createQuestion } from "@/lib/actions/question.action";
 
 const type: any = "create";
 
@@ -37,7 +38,7 @@ const Question = () => {
   });
 
   // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof QuestionsSchema>) {
+  async function onSubmit(values: z.infer<typeof QuestionsSchema>) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
 
@@ -47,6 +48,8 @@ const Question = () => {
       // make an async call to yout API -> create a question
       // contain all form data
       // navigate to home page
+
+      await createQuestion({});
     } catch (error) {
     } finally {
       setIsSubmitting(false);
@@ -132,6 +135,8 @@ const Question = () => {
                     editorRef.current = editor;
                   }}
                   initialValue=""
+                  onBlur={field.onBlur}
+                  onEditorChange={(content) => field.onChange(content)}
                   init={{
                     height: 350,
                     menubar: false,
