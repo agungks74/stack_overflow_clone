@@ -1,10 +1,9 @@
 import Link from "next/link";
-import { title } from "process";
 import React from "react";
 import RenderTag from "../shared/RenderTag";
 import Metric from "../shared/Metric";
 import { formatNumber, getTimestamp } from "@/lib/utils";
-import { auth } from "@clerk/nextjs/server";
+// import { auth } from "@clerk/nextjs/server";
 
 interface QuestionProps {
   _id: string;
