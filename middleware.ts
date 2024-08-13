@@ -11,7 +11,9 @@ const publicRoutes = [
   "/community",
   "/jobs",
   "/api/chatgpt",
-  "/ask-question(.*)",
+  "/sign-in(.*)",
+  "/sign-up(.*)",
+  // "/ask-question(.*)",
 ];
 
 // Create a route matcher for public routes
