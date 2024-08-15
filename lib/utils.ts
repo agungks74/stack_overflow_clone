@@ -39,3 +39,28 @@ export const formatNumber = (num: number): string => {
     return num.toString();
   }
 };
+
+export const getJoinedDate = (date: Date): string => {
+  // Array of month names
+  const monthNames: string[] = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
+  // Extract month and year from the date
+  const month: string = monthNames[date.getMonth()];
+  const year: number = date.getFullYear();
+
+  // Return the formatted date
+  return `${month} ${year}`;
+};
