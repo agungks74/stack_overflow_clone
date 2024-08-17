@@ -2,58 +2,12 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import RenderTag from "./RenderTag";
+import { getHotQuestions } from "@/lib/actions/user.action";
+import { getTopPopularTags } from "@/lib/actions/tag.action";
 
-const hotQuestions = [
-  {
-    _id: 1,
-    title: "Lorem ipsum dolor, sit amet consectetur adipisicing elit.",
-  },
-  {
-    _id: 2,
-    title: "Lorem ipsum dolor, sit amet consectetur adipisicing elit.",
-  },
-  {
-    _id: 3,
-    title: "Lorem ipsum dolor, sit amet consectetur adipisicing elit.",
-  },
-  {
-    _id: 4,
-    title: "Lorem ipsum dolor, sit amet consectetur adipisicing elit.",
-  },
-  {
-    _id: 5,
-    title: "Lorem ipsum dolor, sit amet consectetur adipisicing elit.",
-  },
-];
-
-const popularTags = [
-  {
-    _id: "1",
-    name: "javascript",
-    totalQuestions: 5,
-  },
-  {
-    _id: "2",
-    name: "react",
-    totalQuestions: 5,
-  },
-  {
-    _id: "3",
-    name: "next",
-    totalQuestions: 5,
-  },
-  {
-    _id: "4",
-    name: "vue",
-    totalQuestions: 2,
-  },
-  {
-    _id: "5",
-    name: "redux",
-    totalQuestions: 10,
-  },
-];
-const RightSidebar = () => {
+const RightSidebar = async () => {
+  const hotQuestions = await getHotQuestions();
+  const popularTags = await getTopPopularTags();
   return (
     <section
       className="background-light900_dark200 
@@ -62,9 +16,9 @@ const RightSidebar = () => {
       <div>
         <h3 className="h3-bold text-dark200_light900">Top Questions</h3>
         <div className="mt-7 flex w-full flex-col gap-[30px]">
-          {hotQuestions.map((question) => (
+          {hotQuestions.map((question: any) => (
             <Link
-              href={`/questions/${question._id}`}
+              href={`/question/${question._id}`}
               key={question._id}
               className="flex cursor-pointer items-center justify-between gap-7"
             >
@@ -90,7 +44,7 @@ const RightSidebar = () => {
               key={tag._id}
               _id={tag._id}
               name={tag.name}
-              totalQuestions={tag.totalQuestions}
+              totalQuestions={tag.numberOfQuestions}
               showCount
             />
           ))}
