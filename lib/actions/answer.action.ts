@@ -12,8 +12,6 @@ import Question from "@/database/question.model";
 import { revalidatePath } from "next/cache";
 import Interaction from "@/database/interaction.model";
 import User from "@/database/user.model";
-import { User } from "lucide-react";
-
 export async function CreateAnswer(params: CreateAnswerParams) {
   try {
     connectToDatabase();
