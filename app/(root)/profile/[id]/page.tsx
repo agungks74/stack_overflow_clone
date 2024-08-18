@@ -89,14 +89,14 @@ const Page = async ({ params, searchParams }: URLProps) => {
           </TabsList>
           <TabsContent value="top-posts">
             <QuestionTab
-              searchParams={JSON.stringify(searchParams)}
+              searchParams={searchParams}
               userId={userInfo.user._id}
               clerkId={clerkId}
             />
           </TabsContent>
           <TabsContent value="answers" className="flex w-full flex-col gap-6">
             <AnswerTab
-              searchParams={JSON.stringify(searchParams)}
+              searchParams={searchParams}
               userId={userInfo.user._id}
               clerkId={clerkId}
             />
