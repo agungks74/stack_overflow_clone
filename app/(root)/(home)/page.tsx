@@ -10,6 +10,7 @@ import { getQuestions } from "@/lib/actions/question.action";
 import { SearchParamsProps } from "@/types";
 import Link from "next/link";
 import React from "react";
+import Loading from "./loading";
 
 const Home = async ({ searchParams }: SearchParamsProps) => {
   const result = await getQuestions({
@@ -17,6 +18,10 @@ const Home = async ({ searchParams }: SearchParamsProps) => {
     filter: searchParams.filter,
     page: searchParams.page ? +searchParams.page : 1,
   });
+
+  const isLoading = true;
+
+  if (isLoading) return <Loading />;
   return (
     <>
       <div className="flex w-full flex-col-reverse justify-between gap-4 sm:flex-row sm:items-center">
